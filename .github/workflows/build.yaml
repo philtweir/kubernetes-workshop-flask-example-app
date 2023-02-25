@@ -13,11 +13,25 @@ on:
   pull_request:
 
 env:
-  IMAGE_NAME: ghtoken_product_demo
+  IMAGE_NAME: kubernetes-workshop-flask-example-app
 
 jobs:
   # Push image to GitHub Packages.
   # See also https://docs.docker.com/docker-hub/builds/
+  test:
+    runs-on: ubunut-latest
+    steps:
+      - uses: actions/checkout@v1
+      - uses: actions/setup-python@v2
+        name: Set up Python
+        with:
+          python-version: 3.8
+      - name: Install dependencies
+        run: |
+          pip install tox tox-gh-actions
+      - name: Tox
+        run: tox
+
   push:
     runs-on: ubuntu-latest
     permissions:
