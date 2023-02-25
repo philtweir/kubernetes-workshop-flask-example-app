@@ -9,7 +9,7 @@ COPY gunicorn_config.py .
 COPY setup.py           .
 COPY setup.cfg          .
 
-RUN apk add postgresql-client
+RUN apk update && apk add postgresql-dev gcc python3-dev musl-dev
 RUN pip install gunicorn
 RUN pip install -r requirements.txt
 
