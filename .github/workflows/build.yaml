@@ -1,7 +1,7 @@
 name: Demo Push
 
 on:
-  fork:
+  workflow_dispatch:
   push:
     branches:
       - main
