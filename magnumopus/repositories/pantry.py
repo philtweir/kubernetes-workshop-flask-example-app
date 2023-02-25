@@ -12,3 +12,6 @@ class Pantry:
 
     def count_all_substances(self):
         return len(self._cupboard)
+
+    def commit(self):
+        pass

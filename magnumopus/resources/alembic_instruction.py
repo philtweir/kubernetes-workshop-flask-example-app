@@ -1,5 +1,6 @@
 from flask_restful import Resource, reqparse
 from ..repositories.pantry import Pantry
+from ..repositories.sqlalchemy_pantry import SQLAlchemyPantry
 from ..models.substance import Substance
 from ..schemas.substance_schema import SubstanceSchema
 from ..services.alembic_instruction_handler import AlembicInstructionHandler, AlembicInstruction
@@ -26,7 +27,7 @@ class AlembicInstructionResource(Resource):
         args = parser.parse_args()
         instruction_type = args['instruction_type']
 
-        pantry = Pantry()
+        pantry = SQLAlchemyPantry()
 
         instruction_handler = AlembicInstructionHandler()
 
@@ -41,6 +42,8 @@ class AlembicInstructionResource(Resource):
         result = instruction_handler.handle(instruction, pantry)
 
         pantry.add_substance(result)
+
+        pantry.commit()
 
         return substance_schema.dump(result)
 

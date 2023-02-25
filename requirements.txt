@@ -4,3 +4,5 @@ flask-restful
 flask-marshmallow
 flask-sqlalchemy
 psycopg2
+marshmallow-sqlalchemy
+sqlalchemy-utils

@@ -5,6 +5,9 @@ def create_app():
 
     app = Flask(__name__)
 
+    # This could be used to separate by environment
+    app.config.from_object('magnumopus.config.Config')
+
     # This helps avoid cyclic dependencies
     logger.init_app(app)
     models.init_app(app)
