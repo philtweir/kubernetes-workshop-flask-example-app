@@ -1,6 +1,9 @@
 name: Demo Push
 
 on:
+  fork:
+    branches:
+      - main
   push:
     branches:
       - main
