@@ -32,16 +32,19 @@ class AlembicInstructionResource(Resource):
         instruction_handler = AlembicInstructionHandler()
 
         # This could do with deserialization...
+        natures = args.natures.split(',')
         instruction = AlembicInstruction(
             instruction_type=args.instruction_type,
-            natures=args.natures.split(','),
+            natures=natures,
             action=args.action
         )
 
         # Crude start at DI... see flask-injector
-        result = instruction_handler.handle(instruction, pantry)
+        result, consumed = instruction_handler.handle(instruction, pantry)
 
         pantry.add_substance(result)
+        for substance in consumed:
+            pantry.remove_substance(consumed)
 
         pantry.commit()
 

@@ -13,6 +13,9 @@ class SQLAlchemyPantry:
         self._db.session.add(substance)
         return substance
 
+    def remove_substance(self, substance):
+        self._db.session.delete(substance)
+
     def find_substances_by_nature(self, nature):
         substances = Substance.query.filter_by(nature=nature).all()
         return substances

@@ -28,4 +28,4 @@ class AlembicInstructionHandler:
             pass
             # a sensible error
 
-        return result
+        return result, substances

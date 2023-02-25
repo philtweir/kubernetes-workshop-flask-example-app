@@ -7,6 +7,9 @@ class Pantry:
     def add_substance(self, substance):
         self._cupboard.append(substance)
 
+    def remove_substance(self, substance):
+        self._cupboard.remove(substance)
+
     def find_substances_by_nature(self, nature):
         return [substance for substance in self._cupboard if substance.nature == nature]
 
