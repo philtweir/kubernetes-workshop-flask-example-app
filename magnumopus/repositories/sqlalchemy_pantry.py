@@ -22,3 +22,6 @@ class SQLAlchemyPantry:
 
     def commit(self):
         self._db.session.commit()
+
+    def empty(self):
+        Substance.query.delete()

@@ -39,6 +39,13 @@ class SubstanceResource(Resource):
 
         return substance_schema.dump(substance)
 
+    def delete(self):
+        pantry = pantry_cls()
+
+        pantry.empty()
+
+        return True
+
 
 def init_app(app, api):
     api.add_resource(SubstanceResource, '/substance')

@@ -15,3 +15,6 @@ class Pantry:
 
     def commit(self):
         pass
+
+    def empty(self):
+        self._cupboard = []
