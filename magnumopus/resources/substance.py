@@ -44,6 +44,8 @@ class SubstanceResource(Resource):
 
         pantry.empty()
 
+        pantry.commit()
+
         return True
 
 
