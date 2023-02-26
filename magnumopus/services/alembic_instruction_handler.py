@@ -20,12 +20,14 @@ class AlembicInstructionHandler:
 
         alembic = Alembic()
 
+        consumed = []
         if instruction_type == 'mix':
             result = alembic.mix(*substances)
+            consumed = substances
         elif instruction_type == 'process':
             result = alembic.process(action, substances[0])
         else:
             pass
             # a sensible error
 
-        return result, substances
+        return result, consumed
