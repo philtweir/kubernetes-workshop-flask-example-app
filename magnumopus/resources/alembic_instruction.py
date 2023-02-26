@@ -34,7 +34,7 @@ class AlembicInstructionResource(Resource):
         # This could do with deserialization...
         natures = args.natures.split(',')
         instruction = AlembicInstruction(
-            instruction_type=args.instruction_type,
+            instruction_type=instruction_type,
             natures=natures,
             action=args.action
         )
@@ -44,7 +44,7 @@ class AlembicInstructionResource(Resource):
 
         pantry.add_substance(result)
         for substance in consumed:
-            pantry.remove_substance(consumed)
+            pantry.remove_substance(substance)
 
         pantry.commit()
 
