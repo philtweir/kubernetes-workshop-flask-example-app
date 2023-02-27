@@ -16,9 +16,7 @@ substance_schema = SubstanceSchema()
 class AlembicInstructionResource(Resource):
     def get(self):
         """This should return past requests/commands."""
-        
-        logging.error("My error message") # STEP 2
-        return "Hello from Phil"
+        pass
 
     def post(self):
         """
